@@ -1,5 +1,5 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
-  <tab name="Init" type="InitTab" active="false" scrollx="1473.0971984863281" scrolly="-252.5" scale="1">
+  <tab name="Init" type="InitTab" active="true" scrollx="1786.5971984863281" scrolly="-252.5" scale="1">
     <block xmlns="https://developers.google.com/blockly/xml" type="initSettings" id="6Dj5Wa[6u:Lp{oa.Aajo" x="-1406" y="253">
       <field name="LOAD_COMP_ASSETS">FALSE</field>
       <field name="FULLSCREEN">TRUE</field>
@@ -8,7 +8,7 @@
       <field name="FADE_ANNOTATIONS">TRUE</field>
     </block>
   </tab>
-  <tab name="General" type="CommonTab" active="false" scrollx="789.4765372992229" scrolly="291.76221937174773" scale="0.7462153998917538">
+  <tab name="General" type="CommonTab" active="false" scrollx="771.25" scrolly="150.5" scale="1">
     <variables xmlns="https://developers.google.com/blockly/xml">
       <variable id="b4?;`kL}1s0pO%j{xPUi">hideObj</variable>
     </variables>
@@ -324,7 +324,7 @@
       <comment pinned="false" h="80" w="160">Describe this function...</comment>
     </block>
   </tab>
-  <tab name="Zonas" type="CommonTab" active="true" scrollx="1415.75" scrolly="166.75" scale="1">
+  <tab name="Zonas" type="CommonTab" active="false" scrollx="2357.5" scrolly="601.75" scale="1">
     <block xmlns="https://developers.google.com/blockly/xml" type="procedures_defnoreturn" id="5nw1R*3*VaocM?ghXn:/" x="-1901" y="-741">
       <field name="NAME">Cambio</field>
       <comment pinned="false" h="80" w="160">Describe this function...</comment>
@@ -547,7 +547,7 @@
         <block type="procedures_callnoreturn" id="{p17bKN,r-^$NYJ[6/O]">
           <mutation name="Cambio"></mutation>
           <next>
-            <block type="execScript" id="c`vn?)_N8DQ^bOf6,/U/" disabled="true">
+            <block type="execScript" id="c`vn?)_N8DQ^bOf6,/U/">
               <value name="TEXT">
                 <shadow type="textMultiline" id="Q8SVD.OQb=P[2^DRr~E`">
                   <field name="HIGHLIGHT_MODE">javascript</field>
@@ -586,14 +586,14 @@
         </block>
       </statement>
     </block>
-    <block xmlns="https://developers.google.com/blockly/xml" type="procedures_defnoreturn" id="k1KvB(u*h58IqG(}.TZl" x="-1074" y="-11">
+    <block xmlns="https://developers.google.com/blockly/xml" type="procedures_defnoreturn" id="k1KvB(u*h58IqG(}.TZl" x="-1082" y="95">
       <field name="NAME">VB</field>
       <comment pinned="false" h="80" w="160">Describe this function...</comment>
       <statement name="STACK">
         <block type="procedures_callnoreturn" id="]FOxA)}QzLQof3)$Y,#A">
           <mutation name="Cambio"></mutation>
           <next>
-            <block type="execScript" id="OsVVXRi,aF;XY=vuW:!Y" disabled="true">
+            <block type="execScript" id="OsVVXRi,aF;XY=vuW:!Y">
               <value name="TEXT">
                 <shadow type="textMultiline" id="bu3Ae0Ip]PR$ecoh]}Y/">
                   <field name="HIGHLIGHT_MODE">javascript</field>
@@ -605,14 +605,14 @@
         </block>
       </statement>
     </block>
-    <block xmlns="https://developers.google.com/blockly/xml" type="procedures_defnoreturn" id="q}Q@u:z3E6.]ULsD]eci" x="-1064" y="226">
+    <block xmlns="https://developers.google.com/blockly/xml" type="procedures_defnoreturn" id="q}Q@u:z3E6.]ULsD]eci" x="-1072" y="332">
       <field name="NAME">VC</field>
       <comment pinned="false" h="80" w="160">Describe this function...</comment>
       <statement name="STACK">
         <block type="procedures_callnoreturn" id=",DIcwV;**JnToFG-ApXR">
           <mutation name="Cambio"></mutation>
           <next>
-            <block type="execScript" id="LSIMO$*Y1[KcR}K0g/}=" disabled="true">
+            <block type="execScript" id="LSIMO$*Y1[KcR}K0g/}=">
               <value name="TEXT">
                 <shadow type="textMultiline" id="(e7l*Z3[b{W^gY^%Q`0D">
                   <field name="HIGHLIGHT_MODE">javascript</field>
@@ -683,7 +683,7 @@
       </statement>
     </block>
   </tab>
-  <tab name="A" type="CommonTab" active="false" scrollx="505.5" scrolly="281.75" scale="1">
+  <tab name="A" type="CommonTab" active="false" scrollx="662.25" scrolly="281.75" scale="1">
     <variables xmlns="https://developers.google.com/blockly/xml">
       <variable id="^bXA_D1sXik#-XgZ#8/_">A7una</variable>
     </variables>
@@ -1482,7 +1482,7 @@
       </statement>
     </block>
   </tab>
-  <tab name="B" type="CommonTab" active="false" scrollx="1098.75" scrolly="814" scale="1">
+  <tab name="B" type="CommonTab" active="false" scrollx="319.25" scrolly="925.25" scale="1">
     <variables xmlns="https://developers.google.com/blockly/xml">
       <variable id="*@?H5aQIlW.@g228RQ~y">VB6 obj</variable>
     </variables>
@@ -2587,7 +2587,7 @@
       </statement>
     </block>
   </tab>
-  <tab name="C" type="CommonTab" active="false" scrollx="930.5" scrolly="-536" scale="1">
+  <tab name="C" type="CommonTab" active="false" scrollx="86" scrolly="-2528.5" scale="1">
     <block xmlns="https://developers.google.com/blockly/xml" type="procedures_defnoreturn" id="O`G!1)@AamH%zEX++*dz" x="-320" y="488">
       <field name="NAME">vC1</field>
       <comment pinned="false" h="80" w="160">Describe this function...</comment>
@@ -3155,7 +3155,7 @@
       </statement>
     </block>
   </tab>
-  <tab name="D" type="CommonTab" active="false" scrollx="1068.6923164007897" scrolly="543.7004282487185" scale="0.9675299662319494">
+  <tab name="D" type="CommonTab" active="false" scrollx="292.94231640078965" scrolly="-955.0495717512815" scale="0.9675299662319494">
     <block xmlns="https://developers.google.com/blockly/xml" type="procedures_defnoreturn" id="4c$7`(f8?bb5}edk9*hd" x="-384" y="-348">
       <field name="NAME">vD1</field>
       <comment pinned="false" h="80" w="160">Describe this function...</comment>
