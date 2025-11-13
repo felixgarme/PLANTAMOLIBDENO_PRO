@@ -1,0 +1,6 @@
+
+
+import("../js/objsInfo.js");//Informacion de los objetos y de la camara
+//Terminado///////////////////////////////////////////////////////////////////////////////////////////
+v3d.puzzles.procedures["inicio"]();
+

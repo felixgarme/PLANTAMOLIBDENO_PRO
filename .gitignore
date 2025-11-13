@@ -1,0 +1,7 @@
+/PLANTA_MOLIBDENO/METSO.blend
+/PLANTA_MOLIBDENO/METSO.blend1
+/box/
+# Archivos de Blender grandes
+*.blend
+*.blend1
+*.zip

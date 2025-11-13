@@ -1,0 +1,18 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <tab name="Init" type="InitTab" active="false" scrollx="452.75" scrolly="20.25" scale="0.9"></tab>
+  <tab name="New Tab" type="CommonTab" active="true" scrollx="408.2963684082031" scrolly="185.26562499999994" scale="0.9">
+    <block xmlns="https://developers.google.com/blockly/xml" type="connectorSlot" id="KwUP(]~`n)(zq?pPCBUC" x="-292" y="309">
+      <statement name="DO">
+        <block type="execScript" id="5s|3lSv8Sar/#VJ%wKVY">
+          <value name="TEXT">
+            <shadow type="textMultiline" id="48z]ojpslfNwgDa[z`KG">
+              <field name="HIGHLIGHT_MODE">javascript</field>
+              <field name="TEXT" editor-height="10" editor-width="520">window.app = app; </field>
+            </shadow>
+          </value>
+        </block>
+      </statement>
+    </block>
+  </tab>
+  <editorsettings viewport-x="1180.1999999999998" viewport-y="37" viewport-w="798.8" viewport-h="448.5" viewport-hidden="false" toolbox-library-mode="false" toolbox-minimized-mode="false"></editorsettings>
+</xml>

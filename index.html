@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planta Molibdeno - Módulos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #031794; /* azul pedido */
+            --aqua-start: #2c4cf0;
+            --aqua-end: #031794; /* azul pedido */
+            --dark-gray: #333;
+            --medium-gray: #555;
+            --light-gray: #f4f4f4;
+            --white: #ffffff;
+            --sidebar-width: 320px;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-gray);
+            display: flex;
+            min-height: 100vh;
+            color: var(--dark-gray);
+            overflow: hidden; 
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            min-width: var(--sidebar-width);
+            background-color: var(--white);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            padding: 25px 0;
+            box-sizing: border-box;
+        }
+
+        .sidebar .logo {
+            padding: 0 25px 30px 25px;
+            font-size: 1.6em;
+            font-weight: 700;
+            color: var(--medium-gray);
+            display: flex;
+            align-items: center;
+        }
+
+        /* estilo para el logo imagen */
+        .sidebar .logo img {
+            height: 36px;
+            width: auto;
+            object-fit: contain;
+            margin-right: 12px;
+            display: inline-block;
+        }
+
+        .sidebar .logo i {
+            color: var(--primary-blue);
+            margin-right: 12px;
+            font-size: 1.3em;
+        }
+
+        .sidebar-nav {
+            position: relative;
+            flex-grow: 1;
+            overflow-y: auto;
+            padding-right: 16px;
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: relative;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            padding: 16px 25px;
+            margin: 2px 0;
+            color: var(--medium-gray);
+            text-decoration: none;
+            font-size: 1.05em;
+            font-weight: 500;
+            transition: color 0.4s ease;
+            position: relative;
+            z-index: 10;
+            line-height: 1.4;
+            cursor: pointer;
+        }
+
+        .sidebar-nav a.sub-item {
+            padding-left: 55px;
+            font-size: 0.95em;
+            font-weight: 400;
+            color: #666;
+        }
+
+        .sidebar-nav a.active {
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .sidebar-nav a.active.sub-item {
+            color: var(--white);
+        }
+
+        .sidebar-nav a i {
+            margin-right: 15px;
+            font-size: 1.1em;
+            width: 20px;
+            text-align: center;
+        }
+
+        .menu-marker {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 15px;
+            height: 50px;
+            z-index: 1;
+            pointer-events: none;
+            transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), height 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .marker-inner {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--aqua-start) 0%, var(--aqua-end) 60%);
+            box-shadow: 0 6px 18px rgba(3, 23, 148, 0.28);
+            border-radius: 0 12px 12px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .marker-inner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.08), transparent 8%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.06), transparent 6%);
+            mix-blend-mode: overlay;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        @keyframes water-flow {
+            0% { transform: translateX(-10%); }
+            100% { transform: translateX(10%); }
+        }
+
+        .marker-inner .flow {
+            position: absolute;
+            inset: -50% -50%;
+            background: linear-gradient(90deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0.04) 100%);
+            transform: translateX(-10%);
+            animation: water-flow 3.2s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes liquid-wobble {
+            0%   { transform: scaleY(1); }
+            30%  { transform: scaleY(1.12); }
+            60%  { transform: scaleY(0.94); }
+            80%  { transform: scaleY(1.04); }
+            100% { transform: scaleY(1); }
+        }
+
+        .marker-inner.is-wobbling {
+            animation: liquid-wobble 0.6s ease-out;
+        }
+
+        .sub-list {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.36s ease;
+            margin: 0;
+            padding: 0;
+        }
+
+        .has-children > a .caret {
+            margin-left: auto;
+            transition: transform 0.3s ease;
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9em;
+        }
+
+        .has-children.expanded > a .caret {
+            transform: rotate(90deg);
+        }
+
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-nav {
+            background-color: var(--aqua-end);
+            padding: 20px 40px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-nav h1 {
+            color: var(--white);
+            margin: 0;
+            font-size: 2em;
+            font-weight: 500;
+        }
+
+        .content-area {
+            padding: 0;
+            flex-grow: 1;
+        }
+
+        iframe#viewer {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        /* --- MOBILE: estilos añadidos para menú desplegable --- */
+        .mobile-toggle {
+            display: none;
+            background: transparent;
+            border: 0;
+            color: var(--white);
+            font-size: 1.4rem;
+            padding: 8px 10px;
+            cursor: pointer;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            z-index: 150;
+            opacity: 0;
+            transition: opacity 0.28s ease;
+            pointer-events: none;
+        }
+
+        .overlay.visible {
+            display: block;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Ajustes en móvil */
+        @media (max-width: 900px) {
+            body {
+                overflow: visible; /* permite scroll del contenido principal en móvil */
+            }
+
+            .mobile-toggle {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+            }
+
+            /* sidebar se transforma en un panel off-canvas */
+            .sidebar {
+                position: fixed;
+                left: -100%;
+                top: 0;
+                height: 100vh;
+                width: var(--sidebar-width);
+                min-width: 0;
+                z-index: 200;
+                transition: left 0.30s ease, box-shadow 0.3s ease;
+                box-shadow: none;
+            }
+
+            .sidebar.open {
+                left: 0;
+                box-shadow: 6px 0 30px rgba(0,0,0,0.35);
+            }
+
+            /* evita que el contenido principal quede debajo del overlay */
+            .main-content {
+                position: relative;
+                z-index: 50;
+                min-height: 100vh;
+            }
+
+            /* reduce padding de top-nav para móviles */
+            .top-nav {
+                padding: 12px 16px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .top-nav h1 {
+                font-size: 1.2rem;
+                line-height: 1;
+                flex: 1;
+            }
+
+            /* cuando el sidebar está abierto, evita scroll del body */
+            body.no-scroll {
+                overflow: hidden;
+                touch-action: none;
+            }
+        }
+        /* --- FIN MOBILE --- */
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">
+            <!-- reemplazado el icono por la imagen solicitada -->
+            <img src="./img/logo.png" alt="Logo Planta Molibdeno">
+            <span>PLANTA MOLIBDENO</span>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <div class="menu-marker">
+                <div class="marker-inner"><div class="flow"></div></div>
+            </div>
+            
+            <ul>
+                <li><a href="#" class="active" data-src=""><i class="fa-solid fa-gears"></i> Principios Operacionales</a></li>
+                <li><a href="#" data-src=""><i class="fa-solid fa-biohazard"></i> Peligros Químicos y Nociones de Toxicidad</a></li>
+
+                <li class="has-children" id="sustancias">
+                    <!-- al presionar este enlace ahora también cargará el iframe con ./ESTACIONES/ESTACIONES.html -->
+                    <a href="#"><i class="fa-solid fa-flask-vial"></i> Sustancias Químicas en Planta <span class="caret">▶</span></a>
+                    <ul class="sub-list">
+                        <li><a href="#" class="sub-item">3.1. Hidrosulfuro de Sodio (NaHS)</a></li>
+                        <li><a href="#" class="sub-item">3.2. Ácido Sulfúrico (H2SO4)</a></li>
+                        <li><a href="#" class="sub-item">3.3. Sulfuro de Hidrógeno (H2S)</a></li>
+                        <li><a href="#" class="sub-item">3.4. Control de Riesgos</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#"><i class="fa-solid fa-user-shield"></i> Equipos de protección personal EPP</a></li>
+                <li><a href="#"><i class="fa-solid fa-tower-broadcast"></i> Detectores de Gases</a></li>
+                <li><a href="#" data-src="./PLANTA_MOLIBDENO/Planta.html"><i class="fa-solid fa-shield-halved"></i> Control & Evacuación</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <div class="main-content">
+        <header class="top-nav">
+            <!-- Botón movil añadido (no elimina nada) -->
+            <button class="mobile-toggle" aria-label="Abrir menú" title="Abrir menú">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <h1>MÓDULOS DE SEGURIDAD</h1>
+        </header>
+
+        <section class="content-area">
+            <iframe id="viewer" src="" title="Visor de módulo"></iframe>
+        </section>
+    </div>
+
+    <!-- overlay para cerrar el menú al tocar fuera -->
+    <div class="overlay" aria-hidden="true"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nav = document.querySelector('.sidebar-nav');
+            const links = nav.querySelectorAll('a');
+            const marker = document.querySelector('.menu-marker');
+            const markerInner = document.querySelector('.marker-inner');
+            const iframe = document.getElementById('viewer');
+            const sidebar = document.querySelector('.sidebar');
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const overlay = document.querySelector('.overlay');
+
+            function getOffsetWithinNav(el) {
+                const navRect = nav.getBoundingClientRect();
+                const elRect = el.getBoundingClientRect();
+                return elRect.top - navRect.top + nav.scrollTop;
+            }
+
+            function moveMarkerTo(el) {
+                if (!el) return;
+                const offset = getOffsetWithinNav(el);
+                marker.style.transform = `translateY(${offset}px)`;
+                marker.style.height = `${el.offsetHeight}px`;
+            }
+
+            const initial = nav.querySelector('a.active') || nav.querySelector('a');
+            if (initial) moveMarkerTo(initial);
+
+            function setActive(link) {
+                links.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            }
+
+            const parents = nav.querySelectorAll('.has-children');
+            parents.forEach(parent => {
+                const anchor = parent.querySelector('a');
+                const subList = parent.querySelector('.sub-list');
+
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const isExpanded = parent.classList.toggle('expanded');
+                    subList.style.maxHeight = isExpanded ? subList.scrollHeight + 'px' : '0px';
+                    setActive(anchor);
+                    moveMarkerTo(anchor);
+                    markerInner.classList.remove('is-wobbling');
+                    void markerInner.offsetWidth;
+                    markerInner.classList.add('is-wobbling');
+
+                    // CARGAR el iframe solicitado cuando se presione "Sustancias Químicas en Planta"
+                    // (si hay más parents y quieres distintos srcs, adapta aquí usando parent.id u otro atributo)
+                    // en este caso, siempre cargamos ./ESTACIONES/ESTACIONES.html
+                    iframe.src = './ESTACIONES/ESTACIONES.html';
+
+                    // en móvil, cerrar el menú al seleccionar (si deseas que no cierre, quita esto)
+                    if (window.matchMedia && window.matchMedia('(max-width: 900px)').matches) {
+                        // dejamos una pequeña demora para que la transición sea perceptible
+                        setTimeout(() => {
+                            sidebar.classList.remove('open');
+                            overlay.classList.remove('visible');
+                            document.body.classList.remove('no-scroll');
+                        }, 180);
+                    }
+                });
+
+                const subLinks = subList.querySelectorAll('a');
+                subLinks.forEach(slink => {
+                    slink.addEventListener('click', function(ev) {
+                        ev.preventDefault();
+                        setActive(slink);
+                        moveMarkerTo(slink);
+                        markerInner.classList.remove('is-wobbling');
+                        void markerInner.offsetWidth;
+                        markerInner.classList.add('is-wobbling');
+
+                        // en móvil, cerrar el menú al seleccionar sub-item
+                        if (window.matchMedia && window.matchMedia('(max-width: 900px)').matches) {
+                            sidebar.classList.remove('open');
+                            overlay.classList.remove('visible');
+                            document.body.classList.remove('no-scroll');
+                        }
+                    });
+                });
+            });
+
+            links.forEach(link => {
+                if (link.closest('.has-children')) return;
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    setActive(link);
+                    moveMarkerTo(link);
+                    markerInner.classList.remove('is-wobbling');
+                    void markerInner.offsetWidth;
+                    markerInner.classList.add('is-wobbling');
+                    const src = link.getAttribute('data-src');
+                    iframe.src = src || '';
+
+                    // en móvil, cerrar el menú al seleccionar item
+                    if (window.matchMedia && window.matchMedia('(max-width: 900px)').matches) {
+                        sidebar.classList.remove('open');
+                        overlay.classList.remove('visible');
+                        document.body.classList.remove('no-scroll');
+                    }
+                });
+            });
+
+            window.addEventListener('resize', () => {
+                const active = nav.querySelector('a.active');
+                if (active) moveMarkerTo(active);
+                // si se redimensiona a escritorio, asegurar sidebar visible y quitar bloqueo
+                if (!window.matchMedia || !window.matchMedia('(max-width: 900px)').matches) {
+                    sidebar.classList.remove('open');
+                    overlay.classList.remove('visible');
+                    document.body.classList.remove('no-scroll');
+                }
+            });
+
+            // --- funciones para abrir/cerrar sidebar movil ---
+            function openSidebar() {
+                sidebar.classList.add('open');
+                overlay.classList.add('visible');
+                document.body.classList.add('no-scroll');
+                // forzar reposicionado del marker si es necesario
+                const active = nav.querySelector('a.active');
+                if (active) moveMarkerTo(active);
+            }
+
+            function closeSidebar() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('visible');
+                document.body.classList.remove('no-scroll');
+            }
+
+            mobileToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (sidebar.classList.contains('open')) {
+                    closeSidebar();
+                } else {
+                    openSidebar();
+                }
+            });
+
+            overlay.addEventListener('click', function() {
+                closeSidebar();
+            });
+
+            // cerrar con ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' || e.key === 'Esc') {
+                    closeSidebar();
+                }
+            });
+
+            // cerrar si el usuario hace click en un link fuera del nav (solo en móvil)
+            document.addEventListener('click', function(e) {
+                if (!sidebar.contains(e.target) && !mobileToggle.contains(e.target) && window.matchMedia && window.matchMedia('(max-width: 900px)').matches) {
+                    closeSidebar();
+                }
+            });
+
+            // Inicialización: si estamos en móvil, dejamos el menú cerrado por defecto
+            if (window.matchMedia && window.matchMedia('(max-width: 900px)').matches) {
+                sidebar.classList.remove('open');
+            }
+        });
+    </script>
+
+</body>
+</html>
