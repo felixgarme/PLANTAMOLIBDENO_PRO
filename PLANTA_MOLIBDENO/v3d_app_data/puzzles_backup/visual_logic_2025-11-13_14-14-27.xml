@@ -8,7 +8,7 @@
       <field name="FADE_ANNOTATIONS">TRUE</field>
     </block>
   </tab>
-  <tab name="General" type="CommonTab" active="false" scrollx="834.5" scrolly="-100.75" scale="1">
+  <tab name="General" type="CommonTab" active="true" scrollx="1022" scrolly="-58.25" scale="1">
     <variables xmlns="https://developers.google.com/blockly/xml">
       <variable id="b4?;`kL}1s0pO%j{xPUi">hideObj</variable>
     </variables>
@@ -331,15 +331,6 @@
               <field name="FIELDNAME">Cone</field>
             </shadow>
           </value>
-          <next>
-            <block type="hide" id="xQ1lTkp*u6ZwRa6Llkxc">
-              <value name="VALUE">
-                <shadow type="objectList" id=":ECd9FJ!n_3jf.akBmzF">
-                  <field name="FIELDNAME">Body_Lores_GEO</field>
-                </shadow>
-              </value>
-            </block>
-          </next>
         </block>
       </statement>
     </block>
@@ -1502,7 +1493,7 @@
       </statement>
     </block>
   </tab>
-  <tab name="B" type="CommonTab" active="true" scrollx="833.75" scrolly="1049" scale="1">
+  <tab name="B" type="CommonTab" active="false" scrollx="1098.75" scrolly="814" scale="1">
     <variables xmlns="https://developers.google.com/blockly/xml">
       <variable id="*@?H5aQIlW.@g228RQ~y">VB6 obj</variable>
     </variables>
@@ -1588,21 +1579,57 @@
                                     </shadow>
                                   </value>
                                   <statement name="DO">
-                                    <block type="removeObject" id="YvmlRQ5vJy7|ymQQ(SG(">
+                                    <block type="playAnimationAdv" id="6M]0U8v]KqI0.KDn7HEA">
+                                      <mutation xmlns="http://www.w3.org/1999/xhtml" advplaybackoptions="true" enablewhenfinished="false"></mutation>
+                                      <field name="REVERSED">FALSE</field>
+                                      <field name="LOOP">LoopOnce</field>
                                       <value name="VALUE">
-                                        <shadow type="objectList" id="`*Jlz:.l0CylC?KbGM-{">
-                                          <field name="FIELDNAME">Cone</field>
+                                        <shadow type="animationList" id="ig)asFuI*rt,Ie}pT7#+">
+                                          <field name="FIELDNAME">Puerta1</field>
+                                        </shadow>
+                                      </value>
+                                      <value name="FROM">
+                                        <shadow type="math_number" id="8EAS+98cM)1y._OZDAXA">
+                                          <field name="NUM">0</field>
+                                        </shadow>
+                                      </value>
+                                      <value name="TO">
+                                        <shadow type="math_number" id="6ygQ}:QUy1me;J=J4L2%">
+                                          <field name="NUM">101</field>
+                                        </shadow>
+                                      </value>
+                                      <value name="SPEED">
+                                        <shadow type="math_number" id="wOpNIKTKuu+]$y0NSVEF">
+                                          <field name="NUM">0.7</field>
                                         </shadow>
                                       </value>
                                       <next>
-                                        <block type="removeObject" id="88+7@Nucw-};GK=q|tP~">
+                                        <block type="playAnimationAdv" id="#1:ihqCqcFwb_qH`3Khx">
+                                          <mutation xmlns="http://www.w3.org/1999/xhtml" advplaybackoptions="true" enablewhenfinished="false"></mutation>
+                                          <field name="REVERSED">FALSE</field>
+                                          <field name="LOOP">LoopOnce</field>
                                           <value name="VALUE">
-                                            <shadow type="objectList" id="i|xc|9UhuTLD^5lGOBwu">
-                                              <field name="FIELDNAME">Body_Lores_GEO</field>
+                                            <shadow type="animationList" id="XNxQ8m/J3sPSH9da^Pf2">
+                                              <field name="FIELDNAME">Puerta2</field>
+                                            </shadow>
+                                          </value>
+                                          <value name="FROM">
+                                            <shadow type="math_number" id="Qa[_SDe8yFh+@Vr(#)E~">
+                                              <field name="NUM">0</field>
+                                            </shadow>
+                                          </value>
+                                          <value name="TO">
+                                            <shadow type="math_number" id="7deB!@n?Qu,E$h_ntF3i">
+                                              <field name="NUM">101</field>
+                                            </shadow>
+                                          </value>
+                                          <value name="SPEED">
+                                            <shadow type="math_number" id="B0y4RwmGw2mQA?p7P1N$">
+                                              <field name="NUM">0.7</field>
                                             </shadow>
                                           </value>
                                           <next>
-                                            <block type="playAnimationAdv" id="-=IeU)Y[xDgBbO2X?fn^" disabled="true">
+                                            <block type="playAnimationAdv" id="-=IeU)Y[xDgBbO2X?fn^">
                                               <mutation xmlns="http://www.w3.org/1999/xhtml" advplaybackoptions="true" enablewhenfinished="false"></mutation>
                                               <field name="REVERSED">FALSE</field>
                                               <field name="LOOP">LoopRepeat</field>
@@ -1627,7 +1654,7 @@
                                                 </shadow>
                                               </value>
                                               <next>
-                                                <block type="playAnimationAdv" id="7Lel$D.2-B{j%/]PEA!;" disabled="true">
+                                                <block type="playAnimationAdv" id="7Lel$D.2-B{j%/]PEA!;">
                                                   <mutation xmlns="http://www.w3.org/1999/xhtml" advplaybackoptions="true" enablewhenfinished="false"></mutation>
                                                   <field name="REVERSED">FALSE</field>
                                                   <field name="LOOP">LoopRepeat</field>
@@ -1651,60 +1678,6 @@
                                                       <field name="NUM">1</field>
                                                     </shadow>
                                                   </value>
-                                                  <next>
-                                                    <block type="playAnimationAdv" id="6M]0U8v]KqI0.KDn7HEA">
-                                                      <mutation xmlns="http://www.w3.org/1999/xhtml" advplaybackoptions="true" enablewhenfinished="false"></mutation>
-                                                      <field name="REVERSED">FALSE</field>
-                                                      <field name="LOOP">LoopOnce</field>
-                                                      <value name="VALUE">
-                                                        <shadow type="animationList" id="ig)asFuI*rt,Ie}pT7#+">
-                                                          <field name="FIELDNAME">Puerta1</field>
-                                                        </shadow>
-                                                      </value>
-                                                      <value name="FROM">
-                                                        <shadow type="math_number" id="8EAS+98cM)1y._OZDAXA">
-                                                          <field name="NUM">0</field>
-                                                        </shadow>
-                                                      </value>
-                                                      <value name="TO">
-                                                        <shadow type="math_number" id="6ygQ}:QUy1me;J=J4L2%">
-                                                          <field name="NUM">101</field>
-                                                        </shadow>
-                                                      </value>
-                                                      <value name="SPEED">
-                                                        <shadow type="math_number" id="wOpNIKTKuu+]$y0NSVEF">
-                                                          <field name="NUM">0.7</field>
-                                                        </shadow>
-                                                      </value>
-                                                      <next>
-                                                        <block type="playAnimationAdv" id="#1:ihqCqcFwb_qH`3Khx">
-                                                          <mutation xmlns="http://www.w3.org/1999/xhtml" advplaybackoptions="true" enablewhenfinished="false"></mutation>
-                                                          <field name="REVERSED">FALSE</field>
-                                                          <field name="LOOP">LoopOnce</field>
-                                                          <value name="VALUE">
-                                                            <shadow type="animationList" id="XNxQ8m/J3sPSH9da^Pf2">
-                                                              <field name="FIELDNAME">Puerta2</field>
-                                                            </shadow>
-                                                          </value>
-                                                          <value name="FROM">
-                                                            <shadow type="math_number" id="Qa[_SDe8yFh+@Vr(#)E~">
-                                                              <field name="NUM">0</field>
-                                                            </shadow>
-                                                          </value>
-                                                          <value name="TO">
-                                                            <shadow type="math_number" id="7deB!@n?Qu,E$h_ntF3i">
-                                                              <field name="NUM">101</field>
-                                                            </shadow>
-                                                          </value>
-                                                          <value name="SPEED">
-                                                            <shadow type="math_number" id="B0y4RwmGw2mQA?p7P1N$">
-                                                              <field name="NUM">0.7</field>
-                                                            </shadow>
-                                                          </value>
-                                                        </block>
-                                                      </next>
-                                                    </block>
-                                                  </next>
                                                 </block>
                                               </next>
                                             </block>
@@ -3193,7 +3166,7 @@
       </statement>
     </block>
   </tab>
-  <tab name="D" type="CommonTab" active="false" scrollx="1037.4423164007897" scrolly="384.9504282487185" scale="0.9675299662319494">
+  <tab name="D" type="CommonTab" active="false" scrollx="1068.6923164007897" scrolly="543.7004282487185" scale="0.9675299662319494">
     <block xmlns="https://developers.google.com/blockly/xml" type="procedures_defnoreturn" id="4c$7`(f8?bb5}edk9*hd" x="-384" y="-348">
       <field name="NAME">vD1</field>
       <comment pinned="false" h="80" w="160">Describe this function...</comment>
