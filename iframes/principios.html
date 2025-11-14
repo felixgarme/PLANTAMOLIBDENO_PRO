@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principios Operacionales y Seguridad - Quellaveco</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #031794;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(3, 23, 148, 0.3);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            background: white;
+            border-left: 5px solid #031794;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        .section h2 {
+            color: #031794;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #031794;
+        }
+
+        .section h3 {
+            color: #031794;
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section h4 {
+            color: #031794;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .valores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .valor-card {
+            background: #f8f9fa;
+            border: 2px solid #031794;
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .valor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(3, 23, 148, 0.2);
+        }
+
+        .valor-card h3 {
+            color: #031794;
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+
+        ul {
+            margin-left: 2rem;
+            margin-top: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            color: #555;
+        }
+
+        .modelo-operativo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .modelo-step {
+            background: linear-gradient(135deg, #031794 0%, #0520c7 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .modelo-step h4 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .alert-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .danger-box {
+            background: #f8d7da;
+            border-left: 5px solid #dc3545;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .info-box {
+            background: #d1ecf1;
+            border-left: 5px solid #0dcaf0;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .highlight {
+            background: #031794;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #031794;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Principios Operacionales y Seguridad</h1>
+        <p>Quellaveco - Compromiso con la Excelencia Operativa</p>
+    </header>
+
+    <div class="container">
+        <div class="section">
+            <h2>1. Quiénes Somos</h2>
+            <p>Quellaveco busca operar y desarrollar una cartera de activos de alta calidad, generando rentabilidad para los accionistas, protegiendo el entorno social y ambiental, y cumpliendo las normas locales. Apostamos por tecnología, innovación y digitalización para mejorar la vida de las personas.</p>
+        </div>
+
+        <div class="section">
+            <h2>2. Nuestros Valores</h2>
+            <div class="valores-grid">
+                <div class="valor-card">
+                    <h3>Seguridad</h3>
+                    <p>Programas de asistencia y respeto a todo el personal.</p>
+                </div>
+                <div class="valor-card">
+                    <h3>Preocupación y Respeto</h3>
+                    <p>Cumplimiento del marco legal.</p>
+                </div>
+                <div class="valor-card">
+                    <h3>Integridad</h3>
+                    <p>Minimizamos impactos ambientales.</p>
+                </div>
+                <div class="valor-card">
+                    <h3>Responsabilidad</h3>
+                    <p>Operamos con estándares altos.</p>
+                </div>
+                <div class="valor-card">
+                    <h3>Innovación</h3>
+                    <p>Primera mina digital del país.</p>
+                </div>
+                <div class="valor-card">
+                    <h3>Colaboración</h3>
+                    <p>Trabajo con sociedad, autoridades y proveedores.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>3. Reglas de Oro</h2>
+            <p><strong>Diseñadas para lograr cero daño.</strong> Exigen:</p>
+            <ul>
+                <li>Realizar tareas solo si estás entrenado y autorizado.</li>
+                <li>Usar EPP y permisos cuando corresponda.</li>
+                <li>Operar minas respetando áreas restringidas y no ingresar a zonas no fortificadas.</li>
+                <li>Conducir respetando reglas de tránsito y mantener distancia con equipos móviles.</li>
+                <li>Seguir procedimientos en espacios confinados y trabajos en altura.</li>
+                <li>Aislar y bloquear energía antes de intervenir equipos.</li>
+                <li>Evitar estar bajo cargas suspendidas.</li>
+                <li>Usar chaleco salvavidas cerca de embalses.</li>
+                <li>Manejar químicos siguiendo hojas de seguridad.</li>
+                <li>Mantener protecciones en maquinaria y respetar integridad estructural.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>4. Modelo Operativo</h2>
+            <div class="modelo-operativo">
+                <div class="modelo-step">
+                    <h4>1. Planificación</h4>
+                    <p>Preparar el trabajo correctamente.</p>
+                </div>
+                <div class="modelo-step">
+                    <h4>2. Ejecución</h4>
+                    <p>Hacerlo en el momento y forma adecuados.</p>
+                </div>
+                <div class="modelo-step">
+                    <h4>3. Retroalimentación</h4>
+                    <p>Informar oportunidades de mejora.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>5. Planta de Molibdeno – Riesgos Críticos</h2>
+            
+            <h3>A. Evitar fugas de H₂S</h3>
+            
+            <div class="danger-box">
+                <strong>Puede generarse por:</strong>
+                <ul>
+                    <li>Presencia y derrames de NaHS</li>
+                    <li>Baja de pH</li>
+                    <li>Pérdida de hermeticidad</li>
+                </ul>
+                <p><strong>La detección segura se realiza solo con detectores fijos y personales.</strong></p>
+            </div>
+
+            <h4>Control de pH</h4>
+            <div class="info-box">
+                <ul>
+                    <li>El pH debe ser <span class="highlight">≥ 8</span></li>
+                    <li>Se usa ácido sulfúrico (H₂SO₄) para ajustar</li>
+                    <li>Sensores fijos y detectores personales garantizan operación segura</li>
+                </ul>
+            </div>
+
+            <h4>En caso de H₂S</h4>
+            <div class="alert-box">
+                <ul>
+                    <li>Se activan alarmas y se evacúa</li>
+                    <li>Se detiene la adición de NaHS y H₂SO₄</li>
+                    <li>Los gases son enviados al lavador de gases</li>
+                </ul>
+            </div>
+
+            <h4>Lavadores de gases</h4>
+            <p>Eliminan contaminantes y convierten H₂S en NaHS + agua mediante NaOH.</p>
+            <p><strong>Beneficios:</strong> Reducción de emisiones, cumplimiento normativo y protección de la salud.</p>
+
+            <h4>Celdas de flotación</h4>
+            <p>Son herméticas y generan un ambiente inerte (H₂S) reduciendo oxígeno para favorecer la flotación del molibdeno.</p>
+
+            <h3>B. Control de oxígeno</h3>
+            <div class="info-box">
+                <p><strong>El oxígeno debe mantenerse entre <span class="highlight">19.5% y 23.5%</span></strong></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Quellaveco - Compromiso con la Seguridad y la Excelencia Operacional</p>
+    </footer>
+</body>
+</html>
