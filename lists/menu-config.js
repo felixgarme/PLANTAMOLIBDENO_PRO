@@ -1,6 +1,6 @@
 window.menuConfig = [
   { id: "p01", label: "Principios Operacionales", icon: "fa-gears", src: "./iframes/principios.html", collapseOnClick: false },
-  { id: "p02", label: "Peligros Químicos y Nociones de Toxicidad", icon: "fa-biohazard", src: "./ESTACIONES/ESTACIONES.html", collapseOnClick: true },
+  { id: "p02", label: "Peligros Químicos y Nociones de Toxicidad", icon: "fa-biohazard", src: "./ESTACIONES/index.html", collapseOnClick: false },
   { id: "p03", label: "Sustancias Químicas en Planta", icon: "fa-flask-vial", isParent: true, collapseOnClick: false, children: [
       { id: "p03-1", label: "3.1. Hidrosulfuro de Sodio (NaHS)", src: "./iframes/nahs.html", collapseOnClick: true },
       { id: "p03-2", label: "3.2. Ácido Sulfúrico (H2SO4)", src: "./iframes/h2so4.html", collapseOnClick: true },

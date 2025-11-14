@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Hazard Identification</title>
+<style>
+    body {
+        margin: 0;
+        padding: 30px; /* margen alrededor */
+        background: #ffffff;
+        font-family: Arial, sans-serif;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto; /* centrar */
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        display: flex;
+    }
+
+    .card img {
+        width: 40%;
+        object-fit: cover;
+    }
+
+    .content {
+        padding: 25px;
+        width: 60%;
+    }
+
+    h2 {
+        margin-top: 0;
+    }
+
+    .score-box {
+        color: white;
+        background: red;
+        padding: 3px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .status {
+        color: red;
+        font-weight: bold;
+    }
+
+    .buttons {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border-radius: 25px;
+        border: 2px solid black;
+        background: white;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .btn:hover {
+        background: #f2f2f2;
+    }
+
+    .btn.start {
+        background: orange;
+        color: white;
+        border: none;
+    }
+
+    .btn.start:hover {
+        background: #ff7b00;
+    }
+</style>
+</head>
+<body>
+
+<div class="card">
+    <img src="../img/Cuadros/A.png" alt="Hazard Image">
+
+    <div class="content">
+        <h2>Hazard Identification</h2>
+        <p>Take a safety tour throughout the site to identify risky actions and missing standards. Hazard classification notes are helpful during the test.</p>
+
+        <p><strong>Score:</strong> <span class="score-box">30%</span></p>
+        <p><strong>Test Status:</strong> <span class="status">Failed</span></p>
+
+        <div class="buttons">
+            <button class="btn">EXPLORE</button>
+            <button class="btn">PRACTICE</button>
+            <button class="btn start" onclick="location.href='ESTACIONES.html'">INICIAR</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

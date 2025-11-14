@@ -204,7 +204,10 @@ document.addEventListener('DOMContentLoaded', () => {
         break;
     }
   }
-  window.sidebarSignal = sidebarSignal;
+  window.sidebarSignal = window.sidebarSignal || function(cmd){
+    sidebarSignal(cmd);
+  };
+
 
   // ----- inicialización final -----
   setTimeout(() => {
