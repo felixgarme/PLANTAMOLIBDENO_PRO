@@ -128,14 +128,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   toggle.addEventListener('click', (e) => {
     e.stopPropagation();
+
+    // Si está colapsado → abrir
     if (document.body.classList.contains('sidebar-collapsed')) {
       restoreSidebar();
       openSidebar();
       return;
     }
-    if (document.body.classList.contains('sidebar-open')) closeSidebar();
-    else openSidebar();
+
+    // Si está abierto → cerrar
+    if (document.body.classList.contains('sidebar-open')) {
+      closeSidebar();
+      collapseSidebar(); // 🔥 importante → ahora sí cierre total
+      return;
+    }
+
+    // Si está restaurado pero cerrado → abrir
+    restoreSidebar();
+    openSidebar();
   });
+
 
   overlay.addEventListener('click', () => {
     closeSidebar();

@@ -1,11 +1,7 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
-  <tab name="Init" type="InitTab" active="false" scrollx="1420" scrolly="0.25" scale="0.9"></tab>
-  <tab name="New Tab" type="CommonTab" active="true" scrollx="592.4781579707735" scrolly="-32.133110182355836" scale="0.7462153998917538">
-    <block xmlns="https://developers.google.com/blockly/xml" type="procedures_defnoreturn" id="ZI$D-.xOR=OFI3R;%#]0" x="-270" y="163">
-      <field name="NAME">inicio</field>
-      <comment pinned="false" h="80" w="160">Describe this function...</comment>
-    </block>
-    <block xmlns="https://developers.google.com/blockly/xml" type="connectorSlot" id="KwUP(]~`n)(zq?pPCBUC" x="-235" y="344">
+  <tab name="Init" type="InitTab" active="false" scrollx="1106.25" scrolly="0.25" scale="0.9"></tab>
+  <tab name="General" type="CommonTab" active="true" scrollx="1278" scrolly="100.75" scale="1">
+    <block xmlns="https://developers.google.com/blockly/xml" type="connectorSlot" id="KwUP(]~`n)(zq?pPCBUC" x="-220" y="190">
       <statement name="DO">
         <block type="addFog" id="#2ozmB~5.#qo,bDUws9a">
           <value name="R">
@@ -152,22 +148,42 @@
                                                     </shadow>
                                                   </value>
                                                   <next>
-                                                    <block type="setTimeout" id="xO_g-WY?BM%AP.y*m@7l">
-                                                      <value name="VALUE">
-                                                        <shadow type="math_number" id="{*oY[zSj{A5ho*0ab@d?">
-                                                          <field name="NUM">1</field>
+                                                    <block type="outline" id="da:m!2(|WO@|AxEJ0ZyZ" disabled="true">
+                                                      <field name="DO_WHAT">ENABLE</field>
+                                                      <value name="TARGET">
+                                                        <shadow type="objectList" id="%=_Gq:=+JWLAw7VMD7?M">
+                                                          <field name="FIELDNAME">info</field>
                                                         </shadow>
                                                       </value>
-                                                      <statement name="DO">
-                                                        <block type="execScript" id="CXynIVtJS^/%{{im=k`h">
-                                                          <value name="TEXT">
-                                                            <shadow type="textMultiline" id="|!f[=of-{)C=j*ow0[6F">
-                                                              <field name="HIGHLIGHT_MODE">javascript</field>
-                                                              <field name="TEXT" editor-height="3" editor-width="782.5">// humo(objName, color, size, count, alturaMax, velocidad, dispersion)&amp;#10;humo("pCylinder206", "#2bbf24", 0.22, 300, 5.5, 0.05, 10,"arriba");&amp;#10;</field>
+                                                      <next>
+                                                        <block type="outline" id="2ASzg!-]?7^m;h2}YpdJ" disabled="true">
+                                                          <field name="DO_WHAT">ENABLE</field>
+                                                          <value name="TARGET">
+                                                            <shadow type="objectList" id="#HJofBkACY/bA%t5-g6n">
+                                                              <field name="FIELDNAME">info.001</field>
                                                             </shadow>
                                                           </value>
+                                                          <next>
+                                                            <block type="setTimeout" id="xO_g-WY?BM%AP.y*m@7l">
+                                                              <value name="VALUE">
+                                                                <shadow type="math_number" id="{*oY[zSj{A5ho*0ab@d?">
+                                                                  <field name="NUM">1</field>
+                                                                </shadow>
+                                                              </value>
+                                                              <statement name="DO">
+                                                                <block type="execScript" id="CXynIVtJS^/%{{im=k`h">
+                                                                  <value name="TEXT">
+                                                                    <shadow type="textMultiline" id="|!f[=of-{)C=j*ow0[6F">
+                                                                      <field name="HIGHLIGHT_MODE">javascript</field>
+                                                                      <field name="TEXT" editor-height="3" editor-width="782.5">// humo(objName, color, size, count, alturaMax, velocidad, dispersion)&amp;#10;humo("pCylinder206", "#2bbf24", 0.22, 300, 5.5, 0.05, 10,"arriba");&amp;#10;</field>
+                                                                    </shadow>
+                                                                  </value>
+                                                                </block>
+                                                              </statement>
+                                                            </block>
+                                                          </next>
                                                         </block>
-                                                      </statement>
+                                                      </next>
                                                     </block>
                                                   </next>
                                                 </block>
@@ -225,6 +241,20 @@
         </block>
       </statement>
     </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="procedures_defnoreturn" id="ZI$D-.xOR=OFI3R;%#]0" x="-1037" y="268">
+      <field name="NAME">inicio</field>
+      <comment pinned="false" h="80" w="160">Describe this function...</comment>
+      <statement name="STACK">
+        <block type="execScript" id="aGX4S?.+X$mOy*}4Hu@T">
+          <value name="TEXT">
+            <shadow type="textMultiline" id="D%+h[OosCC8;|)~h}~Sk">
+              <field name="HIGHLIGHT_MODE">javascript</field>
+              <field name="TEXT" editor-height="3" editor-width="520">html("../iframes/example.html");</field>
+            </shadow>
+          </value>
+        </block>
+      </statement>
+    </block>
     <block xmlns="https://developers.google.com/blockly/xml" type="procedures_defnoreturn" id="4AaL?IrAfuzAnrN8VQ36" x="-232" y="1097">
       <field name="NAME">runs</field>
       <comment pinned="false" h="80" w="160">Describe this function...</comment>
@@ -232,7 +262,7 @@
         <block type="setTimeout" id="%=UAW6R{,+g-~5@|/e7K">
           <value name="VALUE">
             <shadow type="math_number" id="ME7}=NKi|2o%~|lyBv#E">
-              <field name="NUM">0.02</field>
+              <field name="NUM">0.008</field>
             </shadow>
           </value>
           <statement name="DO">
@@ -284,5 +314,5 @@
       </statement>
     </block>
   </tab>
-  <editorsettings viewport-x="1180.1999999999998" viewport-y="37" viewport-w="798.8" viewport-h="448.5" viewport-hidden="false" toolbox-library-mode="false" toolbox-minimized-mode="false"></editorsettings>
+  <editorsettings viewport-x="711.4499999999998" viewport-y="53.25" viewport-w="798.8" viewport-h="448.5" viewport-hidden="true" toolbox-library-mode="false" toolbox-minimized-mode="false"></editorsettings>
 </xml>

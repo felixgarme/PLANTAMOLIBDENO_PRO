@@ -10,5 +10,5 @@ window.menuConfig = [
   },
   { id: "p04", label: "Equipos de Protección Personal EPP", icon: "fa-user-shield", src: "./iframes/epp.html", collapseOnClick: true },
   { id: "p05", label: "Detectores de Gases", icon: "fa-tower-broadcast", src: "./iframes/detectores.html", collapseOnClick: false },
-  { id: "p06", label: "Control & Evacuación", icon: "fa-shield-halved", src: "./PLANTA_MOLIBDENO/Planta.html", collapseOnClick: true }
+  { id: "p06", label: "Control & Evacuación", icon: "fa-shield-halved", src: "./PLANTA_MOLIBDENO/index.html", collapseOnClick: false }
 ];

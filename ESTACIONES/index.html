@@ -2,100 +2,198 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Hazard Identification</title>
+<title>Hazard Cards</title>
+
 <style>
-    body {
-        margin: 0;
-        padding: 30px; /* margen alrededor */
-        background: #ffffff;
-        font-family: Arial, sans-serif;
-    }
+body {
+    margin: 0;
+    padding: 30px;
+    background: #ffffff;
+    font-family: Arial, sans-serif;
+}
 
+#fadeScreen {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.7s ease;
+    z-index: 9999;
+}
+#fadeScreen.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.card {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto 28px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: row;
+}
+
+.card-img {
+    width: 30%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-content {
+    width: 70%;
+    padding: 25px;
+}
+
+.action-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+}
+
+.start-btn {
+    padding: 12px 28px;
+    border-radius: 25px;
+    border: none;
+    background: #031794;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+.start-btn:hover {
+    background: #021069;
+}
+
+.status-text {
+    color: #0a8a00;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 900px) {
     .card {
+        flex-direction: column;
+    }
+    .card-img {
         width: 100%;
-        max-width: 1100px;
-        margin: 0 auto; /* centrar */
-        background: white;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-        display: flex;
+        aspect-ratio: 16 / 9;
     }
+    .card-content {
+        width: 100%;
+    }
+}
 
-    .card img {
-        width: 40%;
-        object-fit: cover;
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
     }
-
-    .content {
-        padding: 25px;
-        width: 60%;
+    .start-btn {
+        width: 100%;
+        padding: 14px;
+        font-size: 17px;
     }
-
-    h2 {
-        margin-top: 0;
+    .action-row {
+        gap: 8px;
     }
-
-    .score-box {
-        color: white;
-        background: red;
-        padding: 3px 10px;
-        border-radius: 5px;
-        font-weight: bold;
+    .status-text {
+        margin-left: 0;
     }
-
-    .status {
-        color: red;
-        font-weight: bold;
-    }
-
-    .buttons {
-        margin-top: 20px;
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-
-    .btn {
-        padding: 10px 20px;
-        border-radius: 25px;
-        border: 2px solid black;
-        background: white;
-        cursor: pointer;
-        font-weight: bold;
-    }
-
-    .btn:hover {
-        background: #f2f2f2;
-    }
-
-    .btn.start {
-        background: orange;
-        color: white;
-        border: none;
-    }
-
-    .btn.start:hover {
-        background: #ff7b00;
-    }
+}
 </style>
+
+<script>
+const LINKS = {
+    '1': "ESTACIONES.html",
+    '2': "Planta2.html"
+};
+
+function startCard(id) {
+    const key = "haz_rev_" + id;
+    localStorage.setItem(key, "true");
+
+    const card = document.querySelector('[data-card="' + id + '"]');
+    if (card) {
+        const status = card.querySelector(".status-text");
+        if (status) status.textContent = "revisado";
+    }
+
+    if (window.parent && typeof window.parent.sidebarSignal === "function") {
+        window.parent.sidebarSignal("hide");
+    }
+
+    document.getElementById("fadeScreen").classList.add("active");
+
+    setTimeout(() => {
+        window.location.href = LINKS[id];
+    }, 700);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("[data-card]").forEach(card => {
+        const id = card.getAttribute("data-card");
+        const key = "haz_rev_" + id;
+        const status = card.querySelector(".status-text");
+
+        if (localStorage.getItem(key) === "true" && status) {
+            status.textContent = "Revisado";
+        }
+
+        const btn = card.querySelector(".start-btn");
+        if (btn) {
+            btn.addEventListener("click", () => startCard(id));
+            btn.addEventListener("keydown", e => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    startCard(id);
+                }
+            });
+        }
+    });
+});
+</script>
 </head>
+
 <body>
 
-<div class="card">
-    <img src="../img/Cuadros/A.png" alt="Hazard Image">
+<div id="fadeScreen"></div>
 
-    <div class="content">
+<div class="card" data-card="1">
+    <div class="card-img">
+        <img src="../img/Cuadros/A.png">
+    </div>
+    <div class="card-content">
         <h2>Hazard Identification</h2>
-        <p>Take a safety tour throughout the site to identify risky actions and missing standards. Hazard classification notes are helpful during the test.</p>
+        <p>Take a safety tour throughout the site to identify risks.</p>
+        <div class="action-row">
+            <button class="start-btn">INICIAR</button>
+            <span class="status-text"></span>
+        </div>
+    </div>
+</div>
 
-        <p><strong>Score:</strong> <span class="score-box">30%</span></p>
-        <p><strong>Test Status:</strong> <span class="status">Failed</span></p>
-
-        <div class="buttons">
-            <button class="btn">EXPLORE</button>
-            <button class="btn">PRACTICE</button>
-            <button class="btn start" onclick="location.href='ESTACIONES.html'">INICIAR</button>
+<div class="card" data-card="2">
+    <div class="card-img">
+        <img src="../img/Cuadros/C.png">
+    </div>
+    <div class="card-content">
+        <h2>Hazard Identification – Ejemplo 2</h2>
+        <p>Otra tarjeta con su propio estado independiente.</p>
+        <div class="action-row">
+            <button class="start-btn">INICIAR</button>
+            <span class="status-text"></span>
         </div>
     </div>
 </div>

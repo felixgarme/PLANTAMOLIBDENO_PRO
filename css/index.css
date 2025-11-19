@@ -1,3 +1,4 @@
+/* index.css (versión corregida - mobile slide & z-index fixes) */
 :root {
   --primary-blue: #031794;
   --aqua-start: #2c4cf0;
@@ -9,6 +10,7 @@
   --sidebar-width: 320px;
 }
 
+/* reset */
 * { box-sizing: border-box; }
 html, body { height: 100%; }
 
@@ -23,23 +25,28 @@ body {
   transition: all .25s ease;
 }
 
+/* SIDEBAR */
 .sidebar {
   background: var(--white);
   height: 100vh;
   padding: 25px 0;
   box-shadow: 2px 0 10px rgba(0,0,0,.05);
   overflow: hidden;
-  position: relative;
+  position: relative; /* en desktop permanece en layout; en mobile será fixed */
   transition: transform .75s cubic-bezier(.22,1,.36,1);
+  /* z-index en desktop no suele importar; en mobile lo sobrescribimos */
 }
 
+/* logo */
 .logo {
   display: flex;
   align-items: center;
-  padding: 0 25px 30px;
+  padding: 0px 10px 30px;
+  justify-content: center;
 }
 .logo img { height: 36px; }
 
+/* nav */
 .sidebar-nav {
   position: relative;
   flex-grow: 1;
@@ -171,6 +178,7 @@ body {
   }
 }
 
+/* marker */
 .menu-marker {
   position: absolute;
   top: 0;
@@ -235,10 +243,14 @@ body {
   transform: rotate(90deg);
 }
 
+/* MAIN CONTENT */
 .main-content {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;       /* necesario para transformar sin afectar layout global */
+  z-index: 100;             /* por debajo del overlay y del sidebar en mobile */
+  transition: transform .35s cubic-bezier(.22,1,.36,1);
 }
 
 .top-nav {
@@ -249,7 +261,7 @@ body {
   gap: 12px;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 1000; /* debe estar por encima para que el toggle siempre sea accesible */
   box-shadow: 0 2px 5px rgba(0,0,0,.08);
 }
 
@@ -264,7 +276,7 @@ body {
   padding: 8px 10px;
   border-radius: 8px;
   cursor: pointer;
-  z-index: 20;
+  z-index: 1010; /* encima del top-nav para clicks seguros */
 }
 
 .top-nav h1 {
@@ -277,6 +289,9 @@ body {
 .content-area {
   padding: 0;
   flex-grow: 1;
+  /* asegurar stacking context para iframe */
+  position: relative;
+  z-index: 100;
 }
 
 iframe#viewer {
@@ -284,8 +299,11 @@ iframe#viewer {
   height: 100%;
   border: 0;
   display: block;
+  /* mejor control visual al mover la main-content */
+  will-change: transform;
 }
 
+/* OVERLAY */
 .overlay {
   display: none;
   position: fixed;
@@ -294,7 +312,7 @@ iframe#viewer {
   opacity: 0;
   pointer-events: none;
   transition: opacity .2s ease;
-  z-index: 40;
+  z-index: 850; /* entre content (100) y sidebar (900) */
 }
 
 .overlay.visible {
@@ -303,6 +321,7 @@ iframe#viewer {
   pointer-events: auto;
 }
 
+/* estados globales */
 body.sidebar-collapsed {
   grid-template-columns: 0 1fr;
 }
@@ -315,6 +334,7 @@ body.sidebar-collapsed .sidebar {
   transform: translateX(-100%);
 }
 
+/* --- MOBILE SPECIFIC --- */
 @media (max-width:900px) {
 
   body {
@@ -322,6 +342,7 @@ body.sidebar-collapsed .sidebar {
     overflow-x: hidden;
   }
 
+  /* FIX: en mobile el sidebar debe ser fixed y por encima del contenido, pero el contenido se desliza */
   .sidebar {
     position: fixed;
     left: 0;
@@ -329,18 +350,25 @@ body.sidebar-collapsed .sidebar {
     height: 100vh;
     width: var(--sidebar-width);
     transform: translateX(-100%);
-    z-index: 200;
+    z-index: 900; /* por encima del overlay y del contenido, por debajo del top-nav */
   }
 
   body.sidebar-open .sidebar {
     transform: translateX(0);
   }
 
+  /* sobre el contenido: al abrir, movemos todo el main-content a la derecha */
+  /* así el iframe no queda "detrás" del sidebar */
+  body.sidebar-open .main-content {
+    transform: translateX(var(--sidebar-width));
+  }
+
+  /* overlay debe estar entre content y sidebar para bloquear clicks */
   .overlay {
     display: block;
     opacity: 0;
     pointer-events: none;
-    z-index: 150;
+    z-index: 850;
   }
 
   body.sidebar-open .overlay {
@@ -356,7 +384,7 @@ body.sidebar-collapsed .sidebar {
     left: 0;
     right: 0;
     padding: 14px 20px;
-    z-index: 300;
+    /* z-index ya declarado arriba (1000) para permanecer encima del sidebar */
   }
 
   .top-nav h1 {

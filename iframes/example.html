@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Example iframe</title>
+<style>
+    :root { --brand: #031794; }
+    body { margin:0; font-family: Inter, Arial, sans-serif; background: #f3f6ff; color:#111; display:flex; align-items:center; justify-content:center; height:100vh; }
+    .card { width: 92%; max-width:720px; background:white; border-radius:12px; padding:28px; box-shadow: 0 6px 24px rgba(2,6,23,0.08); text-align:center; }
+    h2 { margin:0 0 8px 0 }
+    p { color:#444 }
+    .row { margin-top:18px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap }
+    button { padding:10px 16px; border-radius:8px; border:none; cursor:pointer; font-weight:600 }
+    .primary { background:var(--brand); color:white }
+    .ghost { background:transparent; color:var(--brand); border:1px solid rgba(3,23,148,0.12) }
+</style>
+</head>
+<body>
+    <div class="card">
+        <h2>Contenido de prueba</h2>
+        <p>Si estás viendo esto dentro del popup, todo está OK.</p>
+        <div class="row">
+            <button class="primary" onclick="parent.closehtml()">Cerrar desde iframe</button>
+            <button class="ghost" onclick="parent.html('./iframe/example2.html')">Abrir otro HTML (relative)</button>
+        </div>
+    </div>
+</body>
+</html>
